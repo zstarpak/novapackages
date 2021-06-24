@@ -67,13 +67,41 @@ $package['accent'] = app(App\Colors::class)->nextColor();
                 </a>
             </div>
         </div>
-
-        <div class="bg-gray-100 flex text-sm border-t border-gray-300 px-4 py-4 items-center rounded-b">
-            <img src="{{ $package['author']['avatar_url'] }}" class="rounded-full h-6 w-6 mr-4" alt="{{ $package['author']['name'] }}" />
-
-            <a href="/collaborators/{{ $package['author']['github_username'] }}" class="text-indigo-600 font-bold no-underline uppercase text-xs hover:text-indigo-700">
-                {{ $package['author']['name'] }}
-            </a>
+        <div class="bg-gray-100 flex justify-between border-t border-gray-300 px-4 py-4 items-center rounded-b">
+            <div class="flex items-center text-sm">
+                <img src="{{ $package['author']['avatar_url'] }}" class="rounded-full h-6 w-6 mr-4" alt="{{ $package['author']['name'] }}"/>
+                <a href="/collaborators/{{ $package['author']['github_username'] }}" class="text-indigo-600 font-bold no-underline uppercase text-xs hover:text-indigo-700">
+                    {{ $package['author']['name'] }}
+                </a>
+            </div>
+            @if (true)
+                <div>
+                    <div class="flex items-center justify-center">
+                        <div class="relative inline-flex" x-data="{ tooltip: true }">
+                            <div class="rounded-md cursor-pointer" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false">
+                                <svg
+                                    viewBox="0 0 20 20"
+                                    version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    class="fill-current h-4 w-4"
+                                >
+                                    <g stroke="none" stroke-width="1" fill="fill-current" fill-rule="evenodd">
+                                        <g>
+                                            <path d="M2.92893219,17.0710678 C6.83417511,20.9763107 13.1658249,20.9763107 17.0710678,17.0710678 C20.9763107,13.1658249 20.9763107,6.83417511 17.0710678,2.92893219 C13.1658249,-0.976310729 6.83417511,-0.976310729 2.92893219,2.92893219 C-0.976310729,6.83417511 -0.976310729,13.1658249 2.92893219,17.0710678 Z M15.6568542,15.6568542 C18.7810486,12.5326599 18.7810486,7.46734008 15.6568542,4.34314575 C12.5326599,1.21895142 7.46734008,1.21895142 4.34314575,4.34314575 C1.21895142,7.46734008 1.21895142,12.5326599 4.34314575,15.6568542 C7.46734008,18.7810486 12.5326599,18.7810486 15.6568542,15.6568542 Z M9,5 L11,5 L11,11 L9,11 L9,5 Z M9,13 L11,13 L11,15 L9,15 L9,13 Z" id="Combined-Shape"></path>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="relative" x-cloak x-show="tooltip">
+                                <div class="absolute top-0 z-10 w-32 p-3 -mt-1 leading-tight text-white transform -translate-x-1/2 -translate-y-full bg-red-600 rounded-lg shadow-lg">
+                                    This package is possibly abandoned.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 </div>
